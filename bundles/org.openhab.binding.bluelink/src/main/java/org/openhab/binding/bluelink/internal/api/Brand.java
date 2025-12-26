@@ -10,17 +10,29 @@
  *
  * SPDX-License-Identifier: EPL-2.0
  */
-package org.openhab.binding.bluelink.internal.dto;
+package org.openhab.binding.bluelink.internal.api;
 
-import java.util.List;
+import org.eclipse.jdt.annotation.NonNullByDefault;
 
 /**
- * Response from the enrollment details API.
+ * Supported vehicle brands.
  *
  * @author Marcus Better - Initial contribution
  */
-public record EnrollmentResponse(List<EnrolledVehicle> enrolledVehicleDetails) {
+@NonNullByDefault
+public enum Brand {
+    UNKNOWN("unknown"),
+    HYUNDAI("Hyundai"),
+    KIA("Kia"),
+    GENESIS("Genesis");
 
-    public record EnrolledVehicle(VehicleInfo vehicleDetails) {
+    private final String label;
+
+    Brand(final String label) {
+        this.label = label;
+    }
+
+    public String getLabel() {
+        return label;
     }
 }

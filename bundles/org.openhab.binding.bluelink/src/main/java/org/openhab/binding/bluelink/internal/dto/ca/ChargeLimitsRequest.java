@@ -10,27 +10,18 @@
  *
  * SPDX-License-Identifier: EPL-2.0
  */
-package org.openhab.binding.bluelink.internal.api;
+package org.openhab.binding.bluelink.internal.dto.ca;
 
-import org.eclipse.jdt.annotation.NonNullByDefault;
+import java.util.List;
 
 /**
- * Supported API regions.
- *
  * @author Marcus Better - Initial contribution
  */
-@NonNullByDefault
-public enum Region {
-    US("United States"),
-    CA("Canada");
+public record ChargeLimitsRequest(String pin, List<TargetSOC> tsoc) {
 
-    private final String label;
+    public static final int PLUG_TYPE_DC = 0;
+    public static final int PLUG_TYPE_AC = 1;
 
-    Region(final String label) {
-        this.label = label;
-    }
-
-    public String getLabel() {
-        return label;
+    public record TargetSOC(int plugType, int level) {
     }
 }

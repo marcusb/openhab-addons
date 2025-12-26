@@ -10,27 +10,14 @@
  *
  * SPDX-License-Identifier: EPL-2.0
  */
-package org.openhab.binding.bluelink.internal.api;
+package org.openhab.binding.bluelink.internal.dto;
 
-import org.eclipse.jdt.annotation.NonNullByDefault;
+import com.google.gson.annotations.SerializedName;
 
 /**
- * Supported API regions.
- *
  * @author Marcus Better - Initial contribution
  */
-@NonNullByDefault
-public enum Region {
-    US("United States"),
-    CA("Canada");
-
-    private final String label;
-
-    Region(final String label) {
-        this.label = label;
-    }
-
-    public String getLabel() {
-        return label;
-    }
+public record SeatHeaterState(@SerializedName("flSeatHeatState") int frontLeft,
+        @SerializedName("frSeatHeatState") int frontRight, @SerializedName("rlSeatHeatState") int rearLeft,
+        @SerializedName("rrSeatHeatState") int rearRight) {
 }

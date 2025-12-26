@@ -10,27 +10,15 @@
  *
  * SPDX-License-Identifier: EPL-2.0
  */
-package org.openhab.binding.bluelink.internal.api;
-
-import org.eclipse.jdt.annotation.NonNullByDefault;
+package org.openhab.binding.bluelink.internal.dto.ca;
 
 /**
- * Supported API regions.
+ * PIN verification response for Canada API.
  *
  * @author Marcus Better - Initial contribution
  */
-@NonNullByDefault
-public enum Region {
-    US("United States"),
-    CA("Canada");
+public record PinVerifyResponse(Result result) {
 
-    private final String label;
-
-    Region(final String label) {
-        this.label = label;
-    }
-
-    public String getLabel() {
-        return label;
+    public record Result(String pAuth) {
     }
 }

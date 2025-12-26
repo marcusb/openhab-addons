@@ -12,20 +12,17 @@
  */
 package org.openhab.binding.bluelink.internal.dto;
 
-import javax.measure.quantity.Temperature;
-
 import org.eclipse.jdt.annotation.NonNull;
-import org.openhab.core.library.types.QuantityType;
+import org.openhab.binding.bluelink.internal.model.IVehicle;
+import org.openhab.core.types.State;
 
 /**
- * Climate control request for electric vehicles.
- *
  * @author Marcus Better - Initial contribution
  */
-public record ClimateRequestEv(int airCtrl, AirTemperature airTemp, boolean defrost, int heating1) {
+public interface TemperatureValue {
+    String value();
 
-    public static ClimateRequestEv create(final @NonNull QuantityType<@NonNull Temperature> temperature,
-            final boolean heat, final boolean defrost) {
-        return new ClimateRequestEv(1, AirTemperature.of(temperature), defrost, heat ? 1 : 0);
-    }
+    int unit();
+
+    State getTemperature(@NonNull IVehicle vehicle);
 }

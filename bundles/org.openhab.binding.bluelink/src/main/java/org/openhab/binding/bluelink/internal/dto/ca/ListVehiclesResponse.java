@@ -10,27 +10,21 @@
  *
  * SPDX-License-Identifier: EPL-2.0
  */
-package org.openhab.binding.bluelink.internal.api;
+package org.openhab.binding.bluelink.internal.dto.ca;
 
-import org.eclipse.jdt.annotation.NonNullByDefault;
+import java.util.List;
 
 /**
- * Supported API regions.
+ * Response from the `/vhcllst` endpoint.
  *
  * @author Marcus Better - Initial contribution
  */
-@NonNullByDefault
-public enum Region {
-    US("United States"),
-    CA("Canada");
+public record ListVehiclesResponse(Result result) {
 
-    private final String label;
+    public record Result(List<VehicleInfo> vehicles) {
 
-    Region(final String label) {
-        this.label = label;
-    }
-
-    public String getLabel() {
-        return label;
+        public record VehicleInfo(String fuelKindCode, String vehicleId, String nickName, String modelName,
+                String modelYear, String vin, String timezone) {
+        }
     }
 }

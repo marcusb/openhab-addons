@@ -12,20 +12,13 @@
  */
 package org.openhab.binding.bluelink.internal.dto;
 
-import java.util.List;
-
-import com.google.gson.annotations.SerializedName;
-
 /**
- * Charge limits request for the Bluelink API.
- *
  * @author Marcus Better - Initial contribution
  */
-public record ChargeLimitsRequest(@SerializedName("targetSOClist") List<TargetSOC> targetSOCList) {
+public interface Token {
+    String accessToken();
 
-    public static final int PLUG_TYPE_DC = 0;
-    public static final int PLUG_TYPE_AC = 1;
+    String refreshToken();
 
-    public record TargetSOC(int plugType, @SerializedName("targetSOClevel") int targetSOCLevel) {
-    }
+    String expiresIn();
 }

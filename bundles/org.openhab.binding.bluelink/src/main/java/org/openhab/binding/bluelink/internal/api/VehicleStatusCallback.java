@@ -12,25 +12,27 @@
  */
 package org.openhab.binding.bluelink.internal.api;
 
+import java.time.Instant;
+
+import javax.measure.quantity.Length;
+
 import org.eclipse.jdt.annotation.NonNullByDefault;
+import org.openhab.binding.bluelink.internal.dto.CommonVehicleStatus;
+import org.openhab.core.library.types.PointType;
+import org.openhab.core.library.types.QuantityType;
 
 /**
- * Supported API regions.
- *
  * @author Marcus Better - Initial contribution
  */
 @NonNullByDefault
-public enum Region {
-    US("United States"),
-    CA("Canada");
+public interface VehicleStatusCallback {
+    void acceptStatus(CommonVehicleStatus data);
 
-    private final String label;
+    void acceptLastUpdateTimestamp(Instant lastUpdated);
 
-    Region(final String label) {
-        this.label = label;
-    }
+    void acceptSmartKeyBatteryWarning(boolean smartKeyBattery);
 
-    public String getLabel() {
-        return label;
-    }
+    void acceptLocation(PointType location);
+
+    void acceptOdometer(QuantityType<Length> odometer);
 }

@@ -10,12 +10,13 @@
  *
  * SPDX-License-Identifier: EPL-2.0
  */
-package org.openhab.binding.bluelink.internal.dto;
+package org.openhab.binding.bluelink.internal.dto.us.bluelink;
 
 /**
- * Login request for the Bluelink API.
+ * API error response.
  *
  * @author Marcus Better - Initial contribution
  */
-public record LoginRequest(String username, String password) {
+public record ErrorResponse(String functionName, int errorCode, String errorMessage, String errorSubCode,
+        String errorSubMessage) {
 }

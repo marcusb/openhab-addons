@@ -31,10 +31,21 @@ public class BluelinkBindingConstants {
     public static final ThingTypeUID THING_TYPE_VEHICLE = new ThingTypeUID(BINDING_ID, "vehicle");
     public static final Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = Set.of(THING_TYPE_ACCOUNT, THING_TYPE_VEHICLE);
 
-    // API Configuration
-    public static final String API_ENDPOINT = "https://api.telematics.hyundaiusa.com";
-    public static final String CLIENT_ID = "m66129Bb-em93-SPAHYN-bZ91-am4540zp19920";
-    public static final String CLIENT_SECRET = "v558o935-6nne-423i-baa8";
+    // API Configuration - US
+    public static final String API_ENDPOINT_US = "https://api.telematics.hyundaiusa.com";
+    public static final String CLIENT_ID_US = "m66129Bb-em93-SPAHYN-bZ91-am4540zp19920";
+    public static final String CLIENT_SECRET_US = "v558o935-6nne-423i-baa8";
+
+    // API Configuration - Canada (same credentials for all brands)
+    public static final String CLIENT_ID_CA = "HATAHSPACA0232141ED9722C67715A0B";
+
+    // Legacy aliases for backward compatibility
+    @Deprecated
+    public static final String API_ENDPOINT = API_ENDPOINT_US;
+    @Deprecated
+    public static final String CLIENT_ID = CLIENT_ID_US;
+    @Deprecated
+    public static final String CLIENT_SECRET = CLIENT_SECRET_US;
 
     // Channel Groups
     public static final String GROUP_STATUS = "status";

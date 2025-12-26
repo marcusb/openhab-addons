@@ -10,18 +10,21 @@
  *
  * SPDX-License-Identifier: EPL-2.0
  */
-package org.openhab.binding.bluelink.internal.dto;
+package org.openhab.binding.bluelink.internal.dto.ca;
 
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Vehicle location data from the Bluelink API.
- *
  * @author Marcus Better - Initial contribution
  */
-public record VehicleLocation(Coordinates coord) {
+public record TokenResponse(Result result) {
 
-    public record Coordinates(@SerializedName("lat") double latitude, @SerializedName("lon") double longitude,
-            @SerializedName("alt") double altitude) {
+    public record Result(Token token) {
+
+        public record Token(@SerializedName("accessToken") String accessToken,
+                @SerializedName("refreshToken") String refreshToken, @SerializedName("expireIn") String expiresIn)
+                implements
+                    org.openhab.binding.bluelink.internal.dto.Token {
+        }
     }
 }
